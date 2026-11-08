@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contador de clics</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f4f8;
+        }
+        h1 { color: #2c3e50; }
+        #contador {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #0984e3;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            margin: 5px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            background: #00b894;
+        }
+        button.reset { background: #e17055; }
+    </style>
+</head>
+<body>
+    <h1>Contador</h1>
+    <div id="contador">0</div>
+    <div>
+        <button id="sumar">+1</button>
+        <button id="reset" class="reset">Reiniciar</button>
+    </div>
+
+    <script>
+        // 1. Variables de estado
+        let numero = 0;
+
+        // 2. Referencias al DOM
+        const display = document.getElementById('contador');
+        const btnSumar = document.getElementById('sumar');
+        const btnReset = document.getElementById('reset');
+
+        // 3. Función que actualiza la pantalla
+        function actualizarPantalla() {
+            display.textContent = numero;
+
+            // Mensaje divertido según el valor
+            if (numero >= 10) {
+                display.style.color = '#00b894';
+            } else {
+                display.style.color = '#0984e3';
+            }
+        }
+
+        // 4. Eventos
+        btnSumar.addEventListener('click', () => {
+            numero++;
+            actualizarPantalla();
+        });
+
+        btnReset.addEventListener('click', () => {
+            numero = 0;
+            actualizarPantalla();
+        });
+    </script>
+</body>
+</html>
